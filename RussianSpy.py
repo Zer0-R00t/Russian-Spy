@@ -25,7 +25,7 @@ print """
 time.sleep(2)
 os.system("cls")
 
-input = raw_input("1)Get server information\n2)Get PHP version\n3)Download source code of a website\n4)Port Scanner\n\n") #User Options are displayed here
+input = raw_input("1)Get server information\n2)Get PHP version\n3)Download source code of a website\n\n") #User Options are displayed here
 
 if input == "1":
   answer = raw_input("\nEnter the website you want to scan:")
