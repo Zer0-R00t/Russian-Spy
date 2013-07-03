@@ -12,13 +12,13 @@ import socket
 from datetime import datetime
 
 
-print """ 
+print """
 
-    ____                  _                _____            
+    ____                  _                _____
    / __ \__  ____________(_)___ _____     / ___/____  __  __
   / /_/ / / / / ___/ ___/ / __ `/ __ \    \__ \/ __ \/ / / /
- / _, _/ /_/ (__  |__  ) / /_/ / / / /   ___/ / /_/ / /_/ / 
-/_/ |_|\__,_/____/____/_/\__,_/_/ /_/   /____/ .___/\__, /  
+ / _, _/ /_/ (__  |__  ) / /_/ / / / /   ___/ / /_/ / /_/ /
+/_/ |_|\__,_/____/____/_/\__,_/_/ /_/   /____/ .___/\__, /
                                             /_/    /____/
 """
 
@@ -36,8 +36,8 @@ if input == "1":
 	response.close()  # best practice to close the file
 	# this is how to process the http header
 	for h in info.headers:
-                if h.startswith('Server'):
-                        print "\n[+]One moment please..." + " " + "\n" + h
+            if h.startswith("Server"):
+                print "\n[+]One moment please..." + " " + "\n" + h
 
 elif input == "2":
         answer = raw_input("\nEnter the website you want to scan:")
@@ -77,16 +77,16 @@ elif input == "3":
 
 elif input == "4":
 	url = raw_input("\nEnter the website:")
-	request = urllib2.Request(url)
+	request = urllib2.Request("http://" + url)
 	response = urllib2.urlopen(request)
 	html = response.read()
 
-	if "You have an error in your SQL Syntax" or "Query Failed":
+	if "You have an error in your SQL Syntax" or "Query Failed" in html:
 		print "\nThis site is vulnerable to Union Based SQL injection"
-    	print "\n\nI am still working on the rest of the SQL injection part!"
+                print "\n\nI am still working on the rest of the SQL injection part!"
 
-    else:
-    	print "\nSorry this website is not vulnerable to SQL injection."
+        else:
+                print "\nSorry this website is not vulnerable to SQL injection."
 
 
 else:
