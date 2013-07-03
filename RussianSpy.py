@@ -25,10 +25,10 @@ print """
 time.sleep(2)
 os.system("cls")
 
-input = raw_input("1)Get server information\n2)Get PHP version\n3)Download source code of a website\n\n") #User Options are displayed here
+input = raw_input("1)Get server information\n2)Get PHP version\n3)Download source code of a website\n4)Union Based SQL injection checker/exploiter\n\n") #User Options are displayed here
 
 if input == "1":
-  answer = raw_input("\nEnter the website you want to scan:")
+	answer = raw_input("\nEnter the website you want to scan:")
 	response = urllib2.urlopen("http://" + answer)
 	info = response.info()
 	html = response.read()
@@ -74,6 +74,19 @@ elif input == "3":
 		print "\nWhoa,something went wrong"
 		time.sleep(2)
 		sys.exit()
+
+elif input == "4":
+	url = raw_input("\nEnter the website:")
+	request = urllib2.Request(url)
+	response = urllib2.urlopen(request)
+	html = response.read()
+
+	if "You have an error in your SQL Syntax" or "Query Failed":
+		print "\nThis site is vulnerable to Union Based SQL injection"
+    	print "\n\nI am still working on the rest of the SQL injection part!"
+
+    else:
+    	print "\nSorry this website is not vulnerable to SQL injection."
 
 
 else:
